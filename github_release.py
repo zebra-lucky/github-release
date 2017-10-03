@@ -863,7 +863,7 @@ def gh_asset_download(repo_name, tag_name=None, pattern=None):
     releases = get_releases(repo_name)
     downloaded = 0
     for release in releases:
-        if tag_name and not fnmatch.fnmatch(release['tag_name'], tag_name):
+        if tag_name and not fnmatch.fnmatch('%s' % release['tag_name'], tag_name):
             continue
         for asset in release['assets']:
             if pattern and not fnmatch.fnmatch(asset['name'], pattern):
